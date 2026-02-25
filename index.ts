@@ -1,9 +1,11 @@
-export interface VercelConfig {
+export interface VercelClientConfig {
   baseUrl: string;
   bearerToken: string;
   projectId: string;
   baseDomain: string;
 }
+
+export type VercelConfig = VercelClientConfig;
 
 export interface DomainAdditionResult {
   success: boolean;
@@ -63,7 +65,7 @@ interface RequestOptions {
   allowStatuses?: number[];
 }
 
-export function createVercelClient(config: VercelConfig) {
+export function createVercelClient(config: VercelClientConfig) {
   const { baseUrl, bearerToken, projectId, baseDomain } = config;
 
   function missingConfigError(keys: string[]): string | null {
